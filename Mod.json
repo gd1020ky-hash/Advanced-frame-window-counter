@@ -1,0 +1,165 @@
+{
+    "geode": "5.10.1",
+    "gd": {
+        "win": "2.2081",
+        "android": "2.2081",
+        "mac": "2.2081",
+        "ios": "2.2081"
+    },
+    "id": "gd1020ky.afwc",
+    "name": "AFWC",
+    "version": "v1.0.0",
+    "developer": "gd1020ky",
+    "description": "Advanced Frame Window Counter: high-accuracy frame analysis (re-simulates your run to measure the exact frame window of every click) and a live frame window counter (markers and HUD counters).",
+    "early-load": false,
+    "tags": [
+        "utility",
+        "customization"
+    ],
+    "links": {
+        "source": "https://github.com/gd1020ky-hash/Mod-maker-frame-window-counter-geode"
+    },
+    "settings": {
+        "title-general": {
+            "type": "title",
+            "name": "General"
+        },
+        "enabled": {
+            "type": "bool",
+            "name": "Enabled",
+            "description": "Master switch for the frame window counter and for recording.",
+            "default": true
+        },
+        "auto-record": {
+            "type": "bool",
+            "name": "Record every attempt",
+            "description": "Keeps the inputs of the current attempt so that it can be saved, analysed and scanned.",
+            "default": true
+        },
+        "auto-save-complete": {
+            "type": "bool",
+            "name": "Save completed runs",
+            "description": "When you beat a level, the recorded run becomes the active run and is stored on disk.",
+            "default": true
+        },
+        "record-tps": {
+            "type": "float",
+            "name": "Recording TPS",
+            "description": "Ticks per second of recorded runs. 240 is the vanilla physics rate; change it only if you use a TPS bypass.",
+            "default": 240.0,
+            "min": 30.0,
+            "max": 1000.0
+        },
+        "title-display": {
+            "type": "title",
+            "name": "Display"
+        },
+        "show-hud": {
+            "type": "bool",
+            "name": "Counter HUD",
+            "description": "Per-label counters in the top-left corner.",
+            "default": true
+        },
+        "hud-scale": {
+            "type": "float",
+            "name": "HUD scale",
+            "default": 0.5,
+            "min": 0.2,
+            "max": 1.5,
+            "control": {
+                "slider": true
+            }
+        },
+        "show-markers": {
+            "type": "bool",
+            "name": "Click markers",
+            "description": "A ring with the frame window appears on the player at every click.",
+            "default": true
+        },
+        "marker-scale": {
+            "type": "float",
+            "name": "Marker scale",
+            "default": 1.0,
+            "min": 0.4,
+            "max": 2.5,
+            "control": {
+                "slider": true
+            }
+        },
+        "marker-seconds": {
+            "type": "float",
+            "name": "Marker lifetime (s)",
+            "description": "How long a marker stays on screen.",
+            "default": 1.5,
+            "min": 0.3,
+            "max": 10.0
+        },
+        "marker-detail": {
+            "type": "bool",
+            "name": "Early/late detail",
+            "description": "Show how many ticks early/late a click could have been, e.g. 3 (-1/+1).",
+            "default": true
+        },
+        "show-info-line": {
+            "type": "bool",
+            "name": "Info line",
+            "description": "Bottom line with the window, required input rate and position in the run.",
+            "default": true
+        },
+        "title-scan": {
+            "type": "title",
+            "name": "Scanner"
+        },
+        "scan-max-shift": {
+            "type": "int",
+            "name": "Search radius (ticks)",
+            "description": "How far each click is moved in each direction. Windows larger than this are reported as lower bounds.",
+            "default": 30,
+            "min": 4,
+            "max": 240,
+            "control": {
+                "slider": true
+            }
+        },
+        "scan-horizon": {
+            "type": "int",
+            "name": "Survive after next click (ticks)",
+            "description": "A shifted click only counts if the player survives until the next click plus this many ticks. -1 = until the end of the run.",
+            "default": 8,
+            "min": -1,
+            "max": 480
+        },
+        "scan-shift-mode": {
+            "type": "string",
+            "name": "Shift mode",
+            "description": "whole-tap moves press and release together (keeps the hold length). press-only moves just the press.",
+            "default": "whole-tap",
+            "one-of": [
+                "whole-tap",
+                "press-only"
+            ]
+        },
+        "scan-verify": {
+            "type": "bool",
+            "name": "Verify determinism",
+            "description": "Compare the re-simulation with the original run on every tick. Leave on for exact results.",
+            "default": true
+        },
+        "scan-budget-ms": {
+            "type": "int",
+            "name": "Time per frame (ms)",
+            "description": "How much of each rendered frame the scanner may use. Higher = faster scan, lower frame rate.",
+            "default": 12,
+            "min": 2,
+            "max": 60,
+            "control": {
+                "slider": true
+            }
+        },
+        "scan-mute": {
+            "type": "bool",
+            "name": "Mute while scanning",
+            "default": true
+        }
+    }
+}
